@@ -7,6 +7,7 @@ html,
 button,
 input {
     font-family: GameFont;
+    letter-spacing: 2px;
 }
 
 
@@ -17,6 +18,16 @@ html {
 
 h1 {
     font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: #43382a;
+}
+
+a:hover {
+    color: #826d52;
+
 }
 
 .registration__label,
@@ -43,5 +54,62 @@ h1 {
     border: 1px solid black;
     border-radius: 0.2rem;
     cursor: pointer;
+    padding: 5px 15px 5px 15px;
 
+}
+
+
+/*
+* H E A D E R
+*/
+
+.header {
+    text-align: center;
+}
+
+.header__container {
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.header__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__navigation-ul {
+    display: flex;
+    height: 20px;
+    color: #fff;
+    list-style: none;
+    font-weight: 100;
+    font-size: 1rem;
+    line-height: 22px;
+    padding-inline-start: 15px;
+    padding-inline-end: 15px;
+    gap: 20px;
+    justify-content: center;
+
+}
+
+/* .header__navigation__ul-li {
+    padding-right: 10px;
+    padding-left: 10px;
+
+} */
+
+.wrapper {
+    margin: 0 auto;
+}
+
+.wrapper__flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
 }
