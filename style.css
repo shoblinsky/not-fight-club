@@ -1,14 +1,36 @@
+@font-face {
+    font-family: GameFont;
+    src: url("./assets/mplus-1m-regular.ttf");
+}
+
+html,
+button,
+input {
+    font-family: GameFont;
+}
+
+h1 {
+    font-weight: 500;
+}
+
 .registration__label {
     display: flex;
     flex-direction: column;
     margin: 0, auto;
     justify-self: center;
     align-self: center;
-    border: 2px solid black;
-    border-radius: 1.6rem;
+    gap: 0.3rem;
+
 }
 
 .nickname__input {
     color: rgb(45, 45, 36);
     background-color: azure;
+}
+
+.enter {
+    padding: 0.2rem;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    cursor: pointer;
 }
