@@ -9,18 +9,24 @@ input {
     font-family: GameFont;
 }
 
+
+html {
+    scroll-behavior: smooth;
+}
+
+
 h1 {
     font-weight: 500;
 }
 
-.registration__label {
+.registration__label,
+.start__game {
     display: flex;
     flex-direction: column;
-    margin: 0, auto;
+    /* margin: 0, auto; */
     justify-self: center;
     align-self: center;
     gap: 0.3rem;
-
 }
 
 .nickname__input {
@@ -28,9 +34,11 @@ h1 {
     background-color: azure;
 }
 
-.enter {
+.registration,
+.start {
     padding: 0.2rem;
     border: 1px solid black;
     border-radius: 0.2rem;
     cursor: pointer;
+
 }
