@@ -27,6 +27,9 @@ h1 {
     justify-self: center;
     align-self: center;
     gap: 0.3rem;
+
+    justify-content: center;
+    height: 80vh;
 }
 
 .nickname__input {
