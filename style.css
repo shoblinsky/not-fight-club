@@ -62,18 +62,8 @@ a:hover {
 /*
 * H E A D E R
 */
-
 .header {
     text-align: center;
-}
-
-.header__container {
-    height: 150px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    gap: 10px;
 }
 
 .header__navigation {
@@ -90,18 +80,19 @@ a:hover {
     font-weight: 100;
     font-size: 1rem;
     line-height: 22px;
-    padding-inline-start: 15px;
-    padding-inline-end: 15px;
-    gap: 20px;
+    padding-inline-start: 0px;
+    padding-inline-end: 0px;
     justify-content: center;
-
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 20px;
 }
 
-/* .header__navigation__ul-li {
-    padding-right: 10px;
-    padding-left: 10px;
+.header__navigation__ul-li {
+    gap: 20px;
 
-} */
+}
 
 .wrapper {
     margin: 0 auto;
