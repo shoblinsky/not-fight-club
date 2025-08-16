@@ -1,4 +1,5 @@
 const THEHUHCAT = {
     health: 150,
-    attack: 15
+    attack: 15,
 }
+
