@@ -1,0 +1,13 @@
+.page__wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.change {
+    padding: 0.2rem;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    padding: 5px 15px 5px 15px;
+
+}

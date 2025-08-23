@@ -5,6 +5,7 @@ const personParts = ['head', 'torso', 'hands', 'belly', 'legs']
 let playerIsDead = false;
 let enemyIsDead = false;
 let isGameOver = false;
+
 function gameOver() {
     if (playerIsDead || enemyIsDead) {
         isGameOver = true

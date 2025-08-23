@@ -31,7 +31,8 @@ a:hover {
 }
 
 .registration__label,
-.start__game {
+.start__game,
+.character__wrapper {
     display: flex;
     flex-direction: column;
     /* margin: 0, auto; */
@@ -41,6 +42,10 @@ a:hover {
 
     justify-content: center;
     height: 80vh;
+}
+
+.character__wrapper {
+    height: 50vh;
 }
 
 .nickname__input {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings — Not fight club</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../stylesCharacter.css">
 </head>
 
 <body>
@@ -22,10 +23,18 @@
         </div>
     </header>
     <main>
-        <section></section>
+        <section>
+            <div class="character__wrapper">
+                <label for="nickname">
+                    <p>Enter your new nickname</p>
+                </label>
+                <input class="nickname__input" type="text" value="" id="nickname" placeholder="new nickname">
+                <button class="change" id="change" disabled>Change nickname</button>
+            </div>
+        </section>
     </main>
     <footer></footer>
-    <script src="../script3.js"></script>
+    <script src="../registrationCheck.js"></script>
 </body>
 
 </html>
