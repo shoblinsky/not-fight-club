@@ -1,0 +1,18 @@
+.log__container {
+    width: 400px;
+    height: 300px;
+    border: 2px solid #cacaca;
+    border-radius: 8px;
+    background: #9f978d;
+    color: #fff;
+    font-family: 'GameFont';
+    margin-top: 20px;
+    overflow: hidden;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-content: center;
+    overflow-y: auto;
+}
