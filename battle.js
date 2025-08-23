@@ -12,12 +12,16 @@ let defencePartTwo = undefined
 let turn = 0
 
 
-
 function addLog(string) {
     const logString = document.createElement('p')
     logString.textContent = `Ход номер ${turn}. ${string}`
     logWindow.appendChild(logString)
+    turn = turn + 1;
 }
 
+const testButton = document.getElementById('test');
+testButton.addEventListener('click', function () {
+    addLog('хы');
+});
 
 
