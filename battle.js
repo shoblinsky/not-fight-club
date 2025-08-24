@@ -1,5 +1,5 @@
 const logWindow = document.getElementById('log__window');
-
+import enemies from "hostiles.js";
 const personParts = ['head', 'torso', 'hands', 'belly', 'legs']
 
 let playerIsDead = false;

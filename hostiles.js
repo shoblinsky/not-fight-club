@@ -1,4 +1,4 @@
-const ENEMIES = {
+const enemies = {
     THEHUHCAT: {
         name: "The Huh Cat",
         image: 'assets/',
@@ -144,3 +144,5 @@ const ENEMIES = {
         ]
     },
 };
+
+export default enemies;
