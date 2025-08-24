@@ -9,7 +9,7 @@ const start = () => {
     console.log(chooseEnemyIndex())
     console.log(activeEnemyIndex)
     console.log(activeEnemy)
-    // window.location.href = "./pages/battle.html"
+    window.location.href = "./pages/battle.html"
 
 
 }
