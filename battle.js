@@ -1,5 +1,7 @@
 const logWindow = document.getElementById('log__window');
-import enemies from "hostiles.js";
+const fightWrapper = document.getElementById('fight__wrapper');
+
+import enemies from "./hostiles.js";
 const personParts = ['head', 'torso', 'hands', 'belly', 'legs']
 
 let playerIsDead = false;
@@ -11,6 +13,10 @@ function gameOver() {
         isGameOver = true
     }
 }
+
+// if (isGameOver === true) {
+
+// }
 
 let attackPartOne = undefined
 let defencePartOne = undefined
@@ -40,4 +46,14 @@ const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', function () {
     resetLog();
 });
+
+
+let player = {
+    health: 100,
+    attack: 15,
+    criticalChance: 0.25,
+    criticalMult: 5,
+    attackParts: [],
+    defenceParts: [],
+}
 
