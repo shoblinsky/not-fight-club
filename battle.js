@@ -16,27 +16,24 @@ let attackPartOne = undefined
 let defencePartOne = undefined
 let defencePartTwo = undefined
 
-let turn = 0
+let turn = 1
 
-
-function gameInitialization() {
-    addLog('Начало боя.')
-}
 
 function resetLog() {
     logWindow.textContent = '';
+    turn = 1;
 }
 
 function addLog(string) {
     const logString = document.createElement('p')
-    logString.textContent = `Ход номер ${turn}. ${string}`
+    logString.textContent = `Turn #${turn}. ${string}`
     logWindow.appendChild(logString)
     turn = turn + 1;
 }
 
 const testButton = document.getElementById('test');
 testButton.addEventListener('click', function () {
-    addLog('хы');
+    addLog('huh?');
 });
 
 const resetButton = document.getElementById('reset');
