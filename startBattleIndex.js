@@ -1,16 +1,17 @@
-import enemies from "./hostiles.js";
+import { enemies, activeEnemy, activeEnemyIndex, chooseEnemyIndex } from "./hostiles.js";
 const startButton = document.getElementById('start')
-let activeEnemy = null;
-
-
+// let activeEnemy = null;
+// let activeEnemyIndex = Math.round(Math.random() * enemies.length)
+chooseEnemyIndex()
 const start = () => {
-    let enemyIndex = Math.round(Math.random() * enemies.length);
-    activeEnemy = enemies[enemyIndex];
-    console.log(enemyIndex)
+    // let activeEnemyIndex = Math.round(Math.random() * enemies.length);
+
+    console.log(chooseEnemyIndex())
+    console.log(activeEnemyIndex)
     console.log(activeEnemy)
     // window.location.href = "./pages/battle.html"
 
 
 }
-startButton.addEventListener('click', start);
 
+startButton.addEventListener('click', start);
