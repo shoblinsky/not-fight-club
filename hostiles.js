@@ -142,14 +142,18 @@ const enemies = [
     },
 ];
 
-let activeEnemy = null;
+// let activeEnemy = null;
 let activeEnemyIndex = null;
 const chooseEnemyIndex = function () {
     let activeEnemyIndex = Math.round(Math.random() * enemies.length);
+    console.log(activeEnemyIndex);
     return activeEnemyIndex;
 }
 
-activeEnemy = enemies[chooseEnemyIndex()];
+const activeEnemy = function () {
+    const huh = enemies[chooseEnemyIndex()];
+    return huh
+}
 
 
 export { enemies, activeEnemy, activeEnemyIndex, chooseEnemyIndex };
