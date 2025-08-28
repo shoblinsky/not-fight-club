@@ -5,9 +5,13 @@ const startButton = document.getElementById('start')
 // console.log(chooseEnemyIndex())
 const start = () => {
     // let activeEnemyIndex = Math.round(Math.random() * enemies.length);
-
+    // let testEnemyChoose = chooseEnemyIndex();
+    // console.log(`test returns ${testEnemyChoose}`)
     // console.log(chooseEnemyIndex())
-    console.log(activeEnemy())
+    activeEnemy()
+    localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy));
+    localStorage.setItem('activeEnemyIndex', activeEnemyIndex);
+
     // window.location.href = "./pages/battle.html"
 
 
