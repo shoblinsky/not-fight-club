@@ -17,19 +17,16 @@
                     <li class="header__navigation__ul-li"><a href="../index.html">Main</a></li>
                     <li class="header__navigation__ul-li"><a href="./character.html">Character</a></li>
                     <li class="header__navigation__ul-li"><a href="./settings.html">Settings</a></li>
-
                 </ul>
             </nav>
         </div>
     </header>
-
-
     <main>
         <section>
             <div class="fight__wrapper" id="fight__wrapper">
                 <div>
                     <img class="player__avatar__fight" src="" alt="player's avatar">
-                    <p class="character__name__fight">Hero Name</p>
+                    <p> <span class="character__name__fight">Hero Name</span></p>
                     <p>Health: <span class="player__health">100</span></p>
                     <div class="hpbar">
                         <meter min="0" max="100" value="70" class="hpbar__player"></meter>
@@ -37,7 +34,7 @@
                 </div>
                 <div>
                     <img class="enemy__avatar__fight" src="" alt="enemy's avatar">
-                    <p class="enemy__name__fight">Enemy Name</p>
+                    <p> <span class="enemy__name__fight">Enemy Name</span></p>
                     <p>Health: <span class="enemy__health">100</span></p>
                     <div class="hpbar">
                         <meter min="0" max="100" value="40" class="hpbar__enemy"></meter>
@@ -47,8 +44,6 @@
                     <button id="test">test</button>
                     <button id="reset">reset log</button>
                 </div>
-
-                <!--['head', 'torso', 'hands', 'belly', 'legs']-->
                 <div class="attack-options">
                     <h3>Pick one attack zone</h3>
                     <label><input type="radio" name="attack" value="head"> Head</label>
@@ -65,15 +60,11 @@
                     <label><input type="checkbox" name="defence" value="body"> Belly</label>
                     <label><input type="checkbox" name="defence" value="legs"> Legs</label>
                 </div>
-
-                <button class="attack-button" disabled>Attack</button>
-                <button class="leave-button">Back</button>
-
-                <div class="log__container">
-                    <h3 class="log__header">Battle log</h3>
+                <button class="attack" id="attack" disabled>Attack</button>
+                <div class="log__container" id="log__container">
+                    <p class="log__header">Battle log</p>
                     <div id="log__window"></div>
                 </div>
-
             </div>
         </section>
     </main>
@@ -81,7 +72,6 @@
     <script src="../registrationCheck.js"></script>
     <script type="module" src="../hostiles.js"></script>
     <script type="module" src="../battle.js"></script>
-
 </body>
 
 </html>

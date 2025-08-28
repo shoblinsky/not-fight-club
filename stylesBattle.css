@@ -14,5 +14,10 @@
     flex-direction: column;
     justify-self: center;
     align-content: center;
-    overflow-y: auto;
+
+
+}
+
+#log__window {
+    overflow-y: scroll;
 }
