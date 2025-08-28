@@ -144,6 +144,7 @@ const enemies = [
 
 // let activeEnemy = null;
 let activeEnemyIndex = null;
+
 const chooseEnemyIndex = function () {
     let activeEnemyIndex = Math.round(Math.random() * (enemies.length - 1));
     console.log(activeEnemyIndex);

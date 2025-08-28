@@ -8,9 +8,11 @@ const start = () => {
     // let testEnemyChoose = chooseEnemyIndex();
     // console.log(`test returns ${testEnemyChoose}`)
     // console.log(chooseEnemyIndex())
+    chooseEnemyIndex();
     activeEnemy()
-    localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy));
+
     localStorage.setItem('activeEnemyIndex', activeEnemyIndex);
+    localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy()));
 
     // window.location.href = "./pages/battle.html"
 
