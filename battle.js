@@ -1,3 +1,5 @@
+import { enemies, activeEnemy, activeEnemyIndex, chooseEnemyIndex } from "./hostiles.js";
+
 const logWindow = document.getElementById('log__window');
 const fightWrapper = document.getElementById('fight__wrapper');
 
@@ -16,13 +18,37 @@ const enemyAvatar = document.querySelector('.enemy__avatar__fight');
 
 const attack = document.querySelector('.attack');
 
-
-import { enemies, activeEnemy, activeEnemyIndex, chooseEnemyIndex } from "./hostiles.js";
 const personParts = ['head', 'torso', 'hands', 'belly', 'legs']
+
+
+
 
 let playerIsDead = false;
 let enemyIsDead = false;
 let isGameOver = false;
+
+let attackPart = personParts[0]
+let defenceParts = [];
+
+player.attackParts = attackPart;
+player.defenceParts = defenceParts;
+
+// let defencePartOne = undefined
+// let defencePartTwo = undefined
+
+
+
+let player = {
+    health: 100,
+    attack: 15,
+    criticalChance: 0.25,
+    criticalMult: 5,
+    attackParts: [],
+    defenceParts: [],
+}
+
+
+let turn = 1
 
 function gameOver() {
     if (playerIsDead || enemyIsDead) {
@@ -34,13 +60,6 @@ function gameOver() {
 // if (isGameOver === true) {
 
 // }
-
-let attackPartOne = undefined
-let defencePartOne = undefined
-let defencePartTwo = undefined
-
-let turn = 1
-
 
 function resetLog() {
     logWindow.textContent = '';
@@ -55,6 +74,11 @@ function addLog(string) {
     turn = turn + 1;
 }
 
+if (!attackPart || defenceParts.length !== 2) {
+    addLog("Please select one attack zone and two defence zones!");
+    return;
+}
+
 const testButton = document.getElementById('test');
 testButton.addEventListener('click', function () {
     addLog('huh?');
@@ -66,12 +90,4 @@ resetButton.addEventListener('click', function () {
 });
 
 
-let player = {
-    health: 100,
-    attack: 15,
-    criticalChance: 0.25,
-    criticalMult: 5,
-    attackParts: [],
-    defenceParts: [],
-}
 

@@ -1,4 +1,4 @@
-import { enemies, activeEnemy, activeEnemyIndex, chooseEnemyIndex } from "./hostiles.js";
+import { chooseEnemyIndex, activeEnemy, activeEnemyIndex } from "./hostiles.js";
 const startButton = document.getElementById('start')
 // let activeEnemy = null;
 // let activeEnemyIndex = Math.round(Math.random() * enemies.length)
