@@ -9,8 +9,8 @@ const enemyHealthSpan = document.querySelector('.enemy__health');
 const playerHpBar = document.querySelector('.hpbar__player');
 const enemyHpBar = document.querySelector('.hpbar__enemy');
 
-const playerNameSpan = document.querySelector('player__name__fight')
-const playerAvatar = document.querySelector('player__avatar__fight')
+const playerNameSpan = document.querySelector('.character__name__fight')
+const playerAvatar = document.querySelector('.player__avatar__fight')
 
 const enemyNameSpan = document.querySelector('.enemy__name__fight');
 const enemyAvatar = document.querySelector('.enemy__avatar__fight');
@@ -20,7 +20,31 @@ const attack = document.querySelector('.attack');
 
 const personParts = ['head', 'torso', 'hands', 'belly', 'legs']
 
+playerNameSpan.textContent = localStorage.getItem('name')
 
+
+let currentEnemy = JSON.parse(localStorage.getItem('activeEnemy'));
+
+
+if (currentEnemy) {
+    enemyNameSpan.textContent = currentEnemy.name;
+    enemyAvatar.src = currentEnemy.image;
+    enemyHealthSpan.textContent = currentEnemy.health;
+    enemyHpBar.value = currentEnemy.health;
+    enemyHpBar.max = currentEnemy.health;
+    playerHealthSpan.textContent = player.health;
+    playerHpBar.value = player.health;
+    playerHpBar.max = player.health;
+}
+
+let player = {
+    health: 100,
+    attack: 15,
+    criticalChance: 0.25,
+    criticalMult: 5,
+    attackParts: [],
+    defenceParts: [],
+}
 
 
 let playerIsDead = false;
@@ -38,14 +62,7 @@ player.defenceParts = defenceParts;
 
 
 
-let player = {
-    health: 100,
-    attack: 15,
-    criticalChance: 0.25,
-    criticalMult: 5,
-    attackParts: [],
-    defenceParts: [],
-}
+
 
 
 let turn = 1
@@ -74,10 +91,10 @@ function addLog(string) {
     turn = turn + 1;
 }
 
-if (!attackPart || defenceParts.length !== 2) {
-    addLog("Please select one attack zone and two defence zones!");
-    return;
-}
+// if (!attackPart || defenceParts.length !== 2) {
+//     addLog("Please select one attack zone and two defence zones!");
+//     return;
+// }
 
 const testButton = document.getElementById('test');
 testButton.addEventListener('click', function () {
