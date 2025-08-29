@@ -93,6 +93,13 @@ function addLog(string) {
     turn = turn + 1;
 }
 
+function addInfo(string) {
+    const logString = document.createElement('p')
+    logString.textContent = string
+    logWindow.appendChild(logString);
+    logWindow.scrollTop = logWindow.scrollHeight;
+}
+
 // if (!attackPart || defenceParts.length !== 2) {
 //     addLog("Please select one attack zone and two defence zones!");
 //     return;
@@ -109,4 +116,28 @@ resetButton.addEventListener('click', function () {
 });
 
 
+function updateAttackButtonState() {
+    const attackChecked = document.querySelector('input[name="attack"]:checked');
+    const defenceChecked = document.querySelectorAll('input[name="defence"]:checked');
+    attack.disabled = !(attackChecked && defenceChecked.length === 2);
+}
+updateAttackButtonState();
 
+document.querySelectorAll('input[name="defence"]').forEach(input => {
+
+    input.addEventListener('change', () => {
+
+        const checked = document.querySelectorAll('input[name="defence"]:checked');
+        if (checked.length > 2) {
+            input.checked = false;
+            addInfo("You can only select two defence zones!");
+        }
+        updateAttackButtonState();
+    });
+});
+
+document.querySelectorAll('input[name="attack"]').forEach(input => {
+    input.addEventListener('change', () => {
+        updateAttackButtonState();
+    })
+})

@@ -29,7 +29,8 @@
 }
 
 .avatar:hover {
-    background: rgb(0, 0, 0);
+    background-color: #df3021;
+    mix-blend-mode: screen;
     opacity: 0.8;
 }
 
