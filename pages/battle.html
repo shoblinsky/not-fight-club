@@ -24,20 +24,22 @@
     <main>
         <section>
             <div class="fight__wrapper" id="fight__wrapper">
-                <div>
-                    <img class="player__avatar__fight" src="" alt="player's avatar">
-                    <p> <span class="character__name__fight">Hero Name</span></p>
-                    <p>Health: <span class="player__health">100</span></p>
-                    <div class="hpbar">
-                        <meter min="0" max="100" value="70" class="hpbar__player"></meter>
+                <div class="fight__flex">
+                    <div>
+                        <img class="player__avatar__fight" src="" alt="player's avatar">
+                        <p> <span class="character__name__fight">Hero Name</span></p>
+                        <p>Health: <span class="player__health">100</span></p>
+                        <div class="hpbar">
+                            <meter min="0" max="100" value="70" class="hpbar__player"></meter>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <img class="enemy__avatar__fight" src="" alt="enemy's avatar">
-                    <p> <span class="enemy__name__fight">Enemy Name</span></p>
-                    <p>Health: <span class="enemy__health">100</span></p>
-                    <div class="hpbar">
-                        <meter min="0" max="100" value="40" class="hpbar__enemy"></meter>
+                    <div>
+                        <img class="enemy__avatar__fight" src="" alt="enemy's avatar">
+                        <p> <span class="enemy__name__fight">Enemy Name</span></p>
+                        <p>Health: <span class="enemy__health">100</span></p>
+                        <div class="hpbar">
+                            <meter min="0" max="100" value="40" class="hpbar__enemy"></meter>
+                        </div>
                     </div>
                 </div>
                 <div class="test__buttons">
@@ -61,11 +63,12 @@
                     <label><input type="checkbox" name="defence" value="legs"> Legs</label>
                 </div>
                 <button class="attack" id="attack" disabled>Attack</button>
-                <div class="log__container" id="log__container">
-                    <p class="log__header">Battle log</p>
-                    <div id="log__window"></div>
-                </div>
             </div>
+            <div class="log__container" id="log__container">
+                <p class="log__header">Battle log</p>
+                <div id="log__window"></div>
+            </div>
+
         </section>
     </main>
     <footer></footer>
