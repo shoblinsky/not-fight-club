@@ -10,7 +10,7 @@ nicknameInput.addEventListener('input', enableButton);
 
 let wins = 0;
 let loses = 0;
-let avatar = 'default';
+let avatar = '../assets/avatars/avatar1.png';
 const registrate = () => {
     const nickname = nicknameInput.value;
     if (nickname.trim() !== '') {

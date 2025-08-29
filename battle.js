@@ -21,7 +21,16 @@ const attack = document.querySelector('.attack');
 const personParts = ['head', 'torso', 'hands', 'belly', 'legs']
 
 playerNameSpan.textContent = localStorage.getItem('name')
+playerAvatar.src = localStorage.getItem('avatar')
 
+let player = {
+    health: 100,
+    attack: 15,
+    criticalChance: 0.25,
+    criticalMult: 5,
+    attackParts: [],
+    defenceParts: [],
+}
 
 let currentEnemy = JSON.parse(localStorage.getItem('activeEnemy'));
 
@@ -37,14 +46,7 @@ if (currentEnemy) {
     playerHpBar.max = player.health;
 }
 
-let player = {
-    health: 100,
-    attack: 15,
-    criticalChance: 0.25,
-    criticalMult: 5,
-    attackParts: [],
-    defenceParts: [],
-}
+
 
 
 let playerIsDead = false;
