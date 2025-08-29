@@ -47,8 +47,6 @@ if (currentEnemy) {
 }
 
 
-
-
 let playerIsDead = false;
 let enemyIsDead = false;
 let isGameOver = false;
@@ -61,11 +59,6 @@ player.defenceParts = defenceParts;
 
 // let defencePartOne = undefined
 // let defencePartTwo = undefined
-
-
-
-
-
 
 let turn = 1
 

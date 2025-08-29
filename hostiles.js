@@ -3,13 +3,13 @@ const enemies = [
         name: "The Huh Cat",
         image: '../assets/pictures/enemy(6).png',
         health: 100,
-        attack: 10,
-        attackWeights: { head: 3, torso: 1, hands: 1, belly: 1, legs: 1 },
-        defendWeights: { head: 1, torso: 1, hands: 1, belly: 3, legs: 1 },
+        attack: 5,
+
+
         criticalChance: 0.25,
         criticalMult: 2,
-        attackParts: 1,
-        defenceParts: 2,
+        attackParts: 0,
+        defenceParts: 3,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',
@@ -20,14 +20,14 @@ const enemies = [
     {
         name: "Yellow King",
         image: '../assets/pictures/enemy(9).png',
-        health: 100,
-        attack: 10,
-        attackWeights: { head: 3, torso: 2, hands: 1, belly: 1, legs: 1 },
-        defendWeights: { head: 2, torso: 1, hands: 1, belly: 1, legs: 0.5 },
+        health: 50,
+        attack: 15,
+
+
         criticalChance: 0.25,
         criticalMult: 2,
-        attackParts: 1,
-        defenceParts: 2,
+        attackParts: 2,
+        defenceParts: 0,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',
@@ -38,14 +38,14 @@ const enemies = [
     {
         name: "Marina",
         image: '../assets/pictures/enemy(1).png',
-        health: 100,
+        health: 50,
         attack: 10,
-        attackWeights: { head: 1, torso: 1, hands: 1, belly: 1, legs: 2 },
-        defendWeights: { head: 1, torso: 3, hands: 2, belly: 1, legs: 2 },
+
+
         criticalChance: 0.25,
         criticalMult: 2,
-        attackParts: 1,
-        defenceParts: 2,
+        attackParts: 2,
+        defenceParts: 1,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',
@@ -56,14 +56,13 @@ const enemies = [
     {
         name: "Mercenary",
         image: '../assets/pictures/enemy(8).png',
-        health: 100,
-        attack: 10,
-        attackWeights: { head: 2, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
-        defendWeights: { head: 1.5, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
+        health: 15,
+        attack: 30,
+
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
-        defenceParts: 2,
+        defenceParts: 5,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',
@@ -73,10 +72,9 @@ const enemies = [
     }, {
         name: "Ghoul",
         image: '../assets/pictures/enemy(10).png',
-        health: 100,
-        attack: 10,
-        attackWeights: { head: 2, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
-        defendWeights: { head: 1.5, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
+        health: 30,
+        attack: 5,
+
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
@@ -90,14 +88,13 @@ const enemies = [
     }, {
         name: "Gentleman",
         image: '../assets/pictures/enemy(4).png',
-        health: 100,
-        attack: 10,
-        attackWeights: { head: 2, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
-        defendWeights: { head: 1.5, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
+        health: 150,
+        attack: 20,
+
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
-        defenceParts: 2,
+        defenceParts: 0,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',
@@ -107,14 +104,13 @@ const enemies = [
     }, {
         name: "Father Hugo",
         image: '../assets/pictures/enemy(7).png',
-        health: 100,
-        attack: 10,
-        attackWeights: { head: 2, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
-        defendWeights: { head: 1.5, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
+        health: 70,
+        attack: 15,
+
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
-        defenceParts: 2,
+        defenceParts: 1,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',
@@ -126,13 +122,12 @@ const enemies = [
         name: "Abella",
         image: '../assets/pictures/enemy(2).png',
         health: 100,
-        attack: 10,
-        attackWeights: { head: 2, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
-        defendWeights: { head: 1.5, torso: 1.5, hands: 1, belly: 1, legs: 1.5 },
+        attack: 9,
+
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
-        defenceParts: 2,
+        defenceParts: 3,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',

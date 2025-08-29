@@ -20,3 +20,9 @@ const start = () => {
 }
 
 startButton.addEventListener('click', start);
+
+const continueButton = document.getElementById('continue')
+const continueGame = () => {
+    window.location.href = "./pages/battle.html"
+}
+continueButton.addEventListener('click', continueGame);
