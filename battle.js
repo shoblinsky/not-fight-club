@@ -184,8 +184,6 @@ function battle() {
         return;
     }
 
-    addInfo('ATTACK TEST')
-
     player.attackParts = [attackPart];
     player.defenceParts = defenceParts;
 
@@ -193,7 +191,29 @@ function battle() {
     activeEnemy.attackParts = [enemyChoices.attackPart];
     activeEnemy.defenceParts = enemyChoices.defendParts;
 
-    addInfo(`AttackParts of player${[attackPart]}. Enemy: ${enemyChoices.attackPart}`)
+    const playerAttack = calculateDamage(player, activeEnemy.defenceParts);
+    activeEnemy.health -= playerAttack.damage;
+    addLog(`${localStorage.getItem('name')} attacks ${activeEnemy.name}'s ${player.attackParts[0]} for ${playerAttack.damage} damage${playerAttack.isCritical ? ' (Critical)' : ''}${playerAttack.isBlocked ? ' (Blocked)' : ''}! Enemy HP: ${activeEnemy.health}`);
+
+    playerHealthSpan.textContent = player.health;
+    playerHpBar.value = player.health;
+    if (player.health <= 0) {
+        playerIsDead = true;
+        gameOver();
+        addInfo(`${playerNameSpan.textContent} defeat!`)
+        localStorage.setItem('loses', loses + 1)
+        return;
+    }
+
+    if (enemy.health <= 0) {
+        enemyIsDead = true;
+        gameOver();
+        addInfo(`${enemyNameSpan.textContent} defeat!`)
+        localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy));
+        localStorage.setItem('loses', loses + 1)
+    }
+
+
 }
 
 attack.addEventListener('click', battle);
