@@ -185,6 +185,15 @@ function battle() {
     }
 
     addInfo('ATTACK TEST')
+
+    player.attackParts = [attackPart];
+    player.defenceParts = defenceParts;
+
+    const enemyChoices = chooseEnemyParts(activeEnemy);
+    activeEnemy.attackParts = [enemyChoices.attackPart];
+    activeEnemy.defenceParts = enemyChoices.defendParts;
+
+    addInfo(`AttackParts of player${[attackPart]}. Enemy: ${enemyChoices.attackPart}`)
 }
 
 attack.addEventListener('click', battle);
