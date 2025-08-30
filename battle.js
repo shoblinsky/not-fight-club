@@ -187,13 +187,17 @@ function battle() {
     player.attackParts = [attackPart];
     player.defenceParts = defenceParts;
 
-    const enemyChoices = chooseEnemyParts(activeEnemy);
-    activeEnemy.attackParts = [enemyChoices.attackPart];
-    activeEnemy.defenceParts = enemyChoices.defendParts;
+    const enemyChoices = chooseEnemyParts(currentEnemy);
+    currentEnemy.attackParts = [enemyChoices.attackPart];
+    currentEnemy.defenceParts = enemyChoices.defendParts;
 
-    const playerAttack = calculateDamage(player, activeEnemy.defenceParts);
-    activeEnemy.health -= playerAttack.damage;
-    addLog(`${localStorage.getItem('name')} attacks ${activeEnemy.name}'s ${player.attackParts[0]} for ${playerAttack.damage} damage${playerAttack.isCritical ? ' (Critical)' : ''}${playerAttack.isBlocked ? ' (Blocked)' : ''}! Enemy HP: ${activeEnemy.health}`);
+    const playerAttack = calculateDamage(player, currentEnemy.defenceParts);
+    currentEnemy.health -= playerAttack.damage;
+    addLog(`${localStorage.getItem('name')} attacks ${currentEnemy.name}'s ${player.attackParts[0]} for ${playerAttack.damage} damage${playerAttack.isCritical ? ' (Critical)' : ''}${playerAttack.isBlocked ? ' (Blocked)' : ''}! Enemy HP: ${currentEnemy.health}`);
+
+    const enemyAttack = calculateDamage(currentEnemy, player.defenceParts);
+    player.health -= enemyAttack.damage;
+    addLog(`${currentEnemy.name} attacks ${localStorage.getItem('name')} ${currentEnemy.attackParts[0]} for ${enemyAttack.damage} damage${enemyAttack.isCritical ? ' (Critical)' : ''}${enemyAttack.isBlocked ? ' (Blocked)' : ''}! Player HP: ${player.health}`);
 
     playerHealthSpan.textContent = player.health;
     playerHpBar.value = player.health;
@@ -205,14 +209,13 @@ function battle() {
         return;
     }
 
-    if (enemy.health <= 0) {
+    if (currentEnemy.health <= 0) {
         enemyIsDead = true;
         gameOver();
         addInfo(`${enemyNameSpan.textContent} defeat!`)
         localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy));
         localStorage.setItem('loses', loses + 1)
     }
-
 
 }
 
