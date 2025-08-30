@@ -14,6 +14,8 @@ const start = () => {
     localStorage.setItem('activeEnemyIndex', activeEnemyIndex);
     localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy()));
 
+
+
     window.location.href = "./pages/battle.html"
 
 
