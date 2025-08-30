@@ -170,6 +170,27 @@ function calculateDamage(attacker, targetDefenceParts) {
 }
 
 
+function battle() {
+    if (isGameOver) {
+        addLog("Game is over, please reset!");
+        gameOver();
+    }
+
+    const attackPart = document.querySelector('input[name="attack"]:checked').value;
+    const defenceParts = Array.from(document.querySelectorAll('input[name="defence"]:checked')).map(input => input.value);
+
+    if (!attackPart || defenceParts.length !== 2) {
+        addInfo("Please select one attack zone and two defence zones!");
+        return;
+    }
+
+    addInfo('ATTACK TEST')
+}
+
+attack.addEventListener('click', battle);
+
+
+
 function updateAttackButtonState() {
     const attackChecked = document.querySelector('input[name="attack"]:checked');
     const defenceChecked = document.querySelectorAll('input[name="defence"]:checked');
