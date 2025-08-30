@@ -144,7 +144,30 @@ function chooseEnemyParts(enemy) {
 
 
 
+function calculateDamage(attacker, targetDefenceParts) {
 
+    let damage = attacker.attack;
+    let isBlocked = false;
+    let isCritical = Math.random() < attacker.criticalChance;
+    if (isCritical) {
+        damage = damage * attacker.criticalMult;
+
+    }
+    if (isCritical) {
+        for (let i = 0; i < attacker.attackParts.length; i++) {
+            for (let j = 0; j < targetDefenceParts.length; j++) {
+                if (attacker.attackParts[i] === targetDefenceParts[j]) {
+                    isBlocked = false;
+                }
+            }
+        }
+        if (!isCritical) {
+            isBlocked = false;
+            damage = damage = attacker.attack;
+        }
+    }
+    return { damage: damage, isCritical: isCritical, isBlocked: isBlocked };
+}
 
 
 function updateAttackButtonState() {
