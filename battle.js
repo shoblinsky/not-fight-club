@@ -61,6 +61,11 @@ player.defenceParts = defenceParts;
 
 let turn = 1
 
+function nextEnemy() {
+    localStorage.setItem('activeEnemyIndex', activeEnemyIndex);
+    localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy()));
+}
+
 function gameOver() {
     if (playerIsDead || enemyIsDead) {
         isGameOver = true;
@@ -69,6 +74,7 @@ function gameOver() {
         attack.addEventListener('click', nextEnemy)
     }
 }
+
 
 // if (isGameOver) {
 // addInfo("Game is over, please reset!");
@@ -135,6 +141,10 @@ function chooseEnemyParts(enemy) {
 
     return { attackParts: attackParts, defenceParts: defenceParts };
 }
+
+
+
+
 
 
 function updateAttackButtonState() {
