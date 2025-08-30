@@ -1,17 +1,30 @@
-import { enemies, activeEnemy, activeEnemyIndex, chooseEnemyIndex } from "./hostiles.js";
+import { chooseEnemyIndex, activeEnemy, activeEnemyIndex } from "./hostiles.js";
 const startButton = document.getElementById('start')
 // let activeEnemy = null;
 // let activeEnemyIndex = Math.round(Math.random() * enemies.length)
-chooseEnemyIndex()
+// console.log(chooseEnemyIndex())
 const start = () => {
     // let activeEnemyIndex = Math.round(Math.random() * enemies.length);
+    // let testEnemyChoose = chooseEnemyIndex();
+    // console.log(`test returns ${testEnemyChoose}`)
+    // console.log(chooseEnemyIndex())
+    chooseEnemyIndex();
+    activeEnemy()
 
-    console.log(chooseEnemyIndex())
-    console.log(activeEnemyIndex)
-    console.log(activeEnemy)
+    localStorage.setItem('activeEnemyIndex', activeEnemyIndex);
+    localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy()));
+
+
+
     window.location.href = "./pages/battle.html"
 
 
 }
 
 startButton.addEventListener('click', start);
+
+const continueButton = document.getElementById('continue')
+const continueGame = () => {
+    window.location.href = "./pages/battle.html"
+}
+continueButton.addEventListener('click', continueGame);

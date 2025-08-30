@@ -21,4 +21,20 @@
 .character__avatar {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+}
+
+.avatar {
+    opacity: 0.6
+}
+
+.avatar:hover {
+    background-color: #df3021;
+    mix-blend-mode: screen;
+    opacity: 0.8;
+}
+
+.avatar.selected {
+    border: 2px solid rgb(13, 13, 159);
+    opacity: 1;
 }

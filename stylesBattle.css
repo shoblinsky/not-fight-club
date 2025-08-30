@@ -1,9 +1,15 @@
+html {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
 .log__container {
-    width: 400px;
+    width: 1000px;
     height: 300px;
     border: 2px solid #cacaca;
     border-radius: 8px;
-    background: #ebe4dc;
+    background: #f9e5ce;
+
     color: #262626;
     font-family: 'GameFont';
     margin-top: 20px;
@@ -14,5 +20,15 @@
     flex-direction: column;
     justify-self: center;
     align-content: center;
-    overflow-y: auto;
+    scrollbar-color: #dec9b1 #908272;
+    scrollbar-width: thin;
+}
+
+#log__window {
+    overflow-y: scroll;
+}
+
+.fight__flex {
+    display: flex;
+    justify-content: space-between;
 }
