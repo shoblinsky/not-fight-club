@@ -17,8 +17,6 @@ const enemyAvatar = document.querySelector('.enemy__avatar__fight');
 
 const attack = document.querySelector('.attack');
 
-const personParts = ['head', 'torso', 'hands', 'belly', 'legs']
-
 playerNameSpan.textContent = localStorage.getItem('name')
 playerAvatar.src = localStorage.getItem('avatar')
 
@@ -138,7 +136,9 @@ function chooseEnemyParts(enemy) {
     let defenceParts = [];
     let availableParts = ['head', 'torso', 'hands', 'belly', 'legs'];
 
-    let attackCount = Math.min(enemy.attackParts || 1);
+
+    let attackCount = Math.min(Number(enemy.attackParts) || 1, availableParts.length);
+
 
     for (let i = 0; i < attackCount; i++) {
         let randomIndex = Math.floor(Math.random() * availableParts.length);
@@ -147,7 +147,7 @@ function chooseEnemyParts(enemy) {
         availableParts.splice(randomIndex, 1);
     }
 
-    let defenceCount = Math.min(enemy.defenceParts || 0);
+    let defenceCount = Math.min(Number(enemy.defenceParts) || 0, availableParts.length);
     for (let i = 0; i < defenceCount; i++) {
         let randomIndex = Math.floor(Math.random() * availableParts.length);
         let chosenPart = availableParts[randomIndex];
@@ -208,7 +208,7 @@ function battle() {
     const playerAttack = calculateDamage(player, currentEnemy.defenceParts);
     currentEnemy.health -= playerAttack.damage;
     if (currentEnemy.health < 0) currentEnemy.health = 0;
-    addLog(`${localStorage.getItem('name')} attacks ${currentEnemy.name}'s ${player.attackParts[0]} for ${playerAttack.damage} damage${playerAttack.isCritical ? ' (Critical)' : ''}${playerAttack.isBlocked ? ' (Blocked)' : ''}! Enemy HP: ${currentEnemy.health}`);
+    addLog(`${playerNameSpan.textContent} attacks ${currentEnemy.name}'s ${player.attackParts[0]} for ${playerAttack.damage} damage${playerAttack.isCritical ? ' (Critical)' : ''}${playerAttack.isBlocked ? ' (Blocked)' : ''}! Enemy HP: ${currentEnemy.health}`);
     enemyHealthSpan.textContent = currentEnemy.health;
     enemyHpBar.value = currentEnemy.health;
 
@@ -230,10 +230,14 @@ function battle() {
 
     const enemyAttack = calculateDamage(currentEnemy, player.defenceParts);
     player.health -= enemyAttack.damage;
-    addLog(`${currentEnemy.name} attacks ${localStorage.getItem('name')} ${currentEnemy.attackParts[0]} for ${enemyAttack.damage} damage${enemyAttack.isCritical ? ' (Critical)' : ''}${enemyAttack.isBlocked ? ' (Blocked)' : ''}! Player HP: ${player.health}`);
+    addInfo(`${currentEnemy.attackParts}`)
+    addLog(`${currentEnemy.name} attacks ${playerNameSpan.textContent}'s ${currentEnemy.attackParts.join(' and ') || 'unknown'} for ${enemyAttack.damage} damage${enemyAttack.isCritical ? ' (Critical)' : ''}${enemyAttack.isBlocked ? ' (Blocked)' : ''}! Player HP: ${player.health}`);
     if (player.health < 0) player.health = 0;
     playerHealthSpan.textContent = player.health;
     playerHpBar.value = player.health;
+
+
+
     if (player.health <= 0) {
         playerIsDead = true;
         let loses = parseInt(localStorage.getItem('loses') || '0') + 1;

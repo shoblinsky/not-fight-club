@@ -4,10 +4,10 @@ const enemies = [
         image: '../assets/pictures/enemy(6).png',
         health: 100,
         attack: 5,
-        criticalChance: 0.25,
-        criticalMult: 2,
-        attackParts: 0,
-        defenceParts: 5,
+        criticalChance: 0.7,
+        criticalMult: 5,
+        attackParts: 1,
+        defenceParts: 3,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',
@@ -42,7 +42,7 @@ const enemies = [
         defenceParts: 1,
         fightPhrase: [
             'Enemy looks at you with a pity.',
-            'Enemy chuckles nerveously, clutching his weapon.',
+            'Enemy chuckles nerveously, clutching his hands.',
             'Enemy eyes dart, looking an escape!',
             'Enemy staring at you with no emotions.'
         ]
@@ -51,7 +51,7 @@ const enemies = [
         name: "Mercenary",
         image: '../assets/pictures/enemy(8).png',
         health: 30,
-        attack: 95,
+        attack: 50,
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
@@ -103,7 +103,7 @@ const enemies = [
         defenceParts: 1,
         fightPhrase: [
             'Enemy looks at you with a pity.',
-            'Enemy chuckles nerveously, clutching his weapon.',
+            'Enemy chuckles nerveously, clutching his hands.',
             'Enemy eyes dart, looking an escape!',
             'Enemy staring at you with no emotions.'
         ]
@@ -119,7 +119,7 @@ const enemies = [
         defenceParts: 3,
         fightPhrase: [
             'Enemy looks at you with a pity.',
-            'Enemy chuckles nerveously, clutching his weapon.',
+            'Enemy chuckles nerveously, clutching her weapon.',
             'Enemy eyes dart, looking an escape!',
             'Enemy staring at you with no emotions.'
         ]
