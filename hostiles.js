@@ -9,7 +9,7 @@ const enemies = [
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 0,
-        defenceParts: 3,
+        defenceParts: 5,
         fightPhrase: [
             'Enemy looks at you with a pity.',
             'Enemy chuckles nerveously, clutching his weapon.',
@@ -56,7 +56,7 @@ const enemies = [
     {
         name: "Mercenary",
         image: '../assets/pictures/enemy(8).png',
-        health: 15,
+        health: 30,
         attack: 30,
 
         criticalChance: 0.25,
@@ -72,7 +72,7 @@ const enemies = [
     }, {
         name: "Ghoul",
         image: '../assets/pictures/enemy(10).png',
-        health: 30,
+        health: 35,
         attack: 5,
 
         criticalChance: 0.25,

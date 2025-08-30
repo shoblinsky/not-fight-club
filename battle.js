@@ -1,5 +1,4 @@
-import { enemies, activeEnemy, activeEnemyIndex, chooseEnemyIndex } from "./hostiles.js";
-
+import { chooseEnemyIndex, activeEnemy, activeEnemyIndex } from "./hostiles.js";
 const logWindow = document.getElementById('log__window');
 const fightWrapper = document.getElementById('fight__wrapper');
 
@@ -25,9 +24,9 @@ playerAvatar.src = localStorage.getItem('avatar')
 
 let player = {
     health: 100,
-    attack: 15,
+    attack: 14,
     criticalChance: 0.25,
-    criticalMult: 5,
+    criticalMult: 1.75,
     attackParts: [],
     defenceParts: [],
 }
@@ -65,12 +64,16 @@ let turn = 1
 function gameOver() {
     if (playerIsDead || enemyIsDead) {
         isGameOver = true;
-        attackButton.disabled = true;
+        addInfo('Fight ended.')
+        attack.textContent = 'Next enemy'
+        attack.addEventListener('click', nextEnemy)
     }
 }
 
-// if (isGameOver === true) {
-
+// if (isGameOver) {
+// addInfo("Game is over, please reset!");
+// nextEnemy()
+// return;
 // }
 
 function resetLog() {
@@ -100,13 +103,38 @@ function addInfo(string) {
 
 const testButton = document.getElementById('test');
 testButton.addEventListener('click', function () {
-    addLog('huh?');
+    addInfo('huh?');
 });
 
 const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', function () {
     resetLog();
 });
+
+
+function chooseEnemyParts(enemy) {
+    let attackParts = [];
+    let defenceParts = [];
+    let availableParts = ['head', 'torso', 'hands', 'belly', 'legs'];
+
+    let attackCount = enemy.attackParts;
+    for (let i = 0; i < attackCount; i++) {
+        let randomIndex = Math.floor(Math.random() * availableParts.length);
+        let chosenPart = availableParts[randomIndex];
+        attackParts.push(chosenPart);
+        availableParts.splice(randomIndex, 1);
+    }
+
+    let defenceCount = enemy.defenceParts;
+    for (let i = 0; i < defenceCount; i++) {
+        let randomIndex = Math.floor(Math.random() * availableParts.length);
+        let chosenPart = availableParts[randomIndex];
+        defenceParts.push(chosenPart);
+        availableParts.splice(randomIndex, 1);
+    }
+
+    return { attackParts: attackParts, defenceParts: defenceParts };
+}
 
 
 function updateAttackButtonState() {
