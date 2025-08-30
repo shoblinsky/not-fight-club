@@ -4,8 +4,6 @@ const enemies = [
         image: '../assets/pictures/enemy(6).png',
         health: 100,
         attack: 5,
-
-
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 0,
@@ -22,8 +20,6 @@ const enemies = [
         image: '../assets/pictures/enemy(9).png',
         health: 50,
         attack: 15,
-
-
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 2,
@@ -40,8 +36,6 @@ const enemies = [
         image: '../assets/pictures/enemy(1).png',
         health: 50,
         attack: 10,
-
-
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 2,
@@ -57,8 +51,7 @@ const enemies = [
         name: "Mercenary",
         image: '../assets/pictures/enemy(8).png',
         health: 30,
-        attack: 30,
-
+        attack: 95,
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
@@ -74,7 +67,6 @@ const enemies = [
         image: '../assets/pictures/enemy(10).png',
         health: 35,
         attack: 5,
-
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
@@ -90,7 +82,6 @@ const enemies = [
         image: '../assets/pictures/enemy(4).png',
         health: 150,
         attack: 20,
-
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
@@ -106,7 +97,6 @@ const enemies = [
         image: '../assets/pictures/enemy(7).png',
         health: 70,
         attack: 15,
-
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,
@@ -123,7 +113,6 @@ const enemies = [
         image: '../assets/pictures/enemy(2).png',
         health: 100,
         attack: 9,
-
         criticalChance: 0.25,
         criticalMult: 2,
         attackParts: 1,

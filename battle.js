@@ -1,4 +1,4 @@
-import { chooseEnemyIndex, activeEnemy, activeEnemyIndex } from "./hostiles.js";
+import { enemies, chooseEnemyIndex, activeEnemy, activeEnemyIndex } from "./hostiles.js";
 const logWindow = document.getElementById('log__window');
 const fightWrapper = document.getElementById('fight__wrapper');
 
@@ -50,37 +50,56 @@ let playerIsDead = false;
 let enemyIsDead = false;
 let isGameOver = false;
 
-let attackPart = personParts[0]
-let defenceParts = [];
 
-player.attackParts = attackPart;
-player.defenceParts = defenceParts;
-
-// let defencePartOne = undefined
-// let defencePartTwo = undefined
 
 let turn = 1
 
-function nextEnemy() {
-    localStorage.setItem('activeEnemyIndex', activeEnemyIndex);
-    localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy()));
-}
+
 
 function gameOver() {
     if (playerIsDead || enemyIsDead) {
         isGameOver = true;
         addInfo('Fight ended.')
         attack.textContent = 'Next enemy'
-        attack.addEventListener('click', nextEnemy)
+        attack.removeEventListener('click', battle);
+        attack.addEventListener('click', nextEnemy);
     }
 }
 
 
-// if (isGameOver) {
-// addInfo("Game is over, please reset!");
-// nextEnemy()
-// return;
-// }
+function nextEnemy() {
+    resetLog();
+    player.health = 100;
+    playerHealthSpan.textContent = player.health;
+    playerHpBar.value = player.health;
+    playerIsDead = false;
+    enemyIsDead = false;
+    isGameOver = false;
+    attack.textContent = 'Attack';
+    attack.removeEventListener('click', nextEnemy);
+    attack.addEventListener('click', battle);
+    let index = Math.floor(Math.random() * 8);
+    currentEnemy = {
+        name: enemies[index].name,
+        image: enemies[index].image,
+        health: enemies[index].health,
+        attack: enemies[index].attack,
+        criticalChance: enemies[index].criticalChance,
+        criticalMult: enemies[index].criticalMult,
+        attackParts: enemies[index].attackParts,
+        defenceParts: enemies[index].defenceParts,
+        fightPhrase: enemies[index].fightPhrase
+    };
+    localStorage.setItem('activeEnemy', JSON.stringify(currentEnemy));
+    enemyNameSpan.textContent = currentEnemy.name;
+    enemyAvatar.src = currentEnemy.image;
+    enemyHealthSpan.textContent = currentEnemy.health;
+    enemyHpBar.value = currentEnemy.health;
+    enemyHpBar.max = currentEnemy.health;
+    addInfo(currentEnemy.fightPhrase[Math.floor(Math.random() * currentEnemy.fightPhrase.length)]);
+}
+
+
 
 function resetLog() {
     logWindow.textContent = '';
@@ -102,10 +121,6 @@ function addInfo(string) {
     logWindow.scrollTop = logWindow.scrollHeight;
 }
 
-// if (!attackPart || defenceParts.length !== 2) {
-//     addLog("Please select one attack zone and two defence zones!");
-//     return;
-// }
 
 const testButton = document.getElementById('test');
 testButton.addEventListener('click', function () {
@@ -123,7 +138,8 @@ function chooseEnemyParts(enemy) {
     let defenceParts = [];
     let availableParts = ['head', 'torso', 'hands', 'belly', 'legs'];
 
-    let attackCount = enemy.attackParts;
+    let attackCount = Math.min(enemy.attackParts || 1);
+
     for (let i = 0; i < attackCount; i++) {
         let randomIndex = Math.floor(Math.random() * availableParts.length);
         let chosenPart = availableParts[randomIndex];
@@ -131,7 +147,7 @@ function chooseEnemyParts(enemy) {
         availableParts.splice(randomIndex, 1);
     }
 
-    let defenceCount = enemy.defenceParts;
+    let defenceCount = Math.min(enemy.defenceParts || 0);
     for (let i = 0; i < defenceCount; i++) {
         let randomIndex = Math.floor(Math.random() * availableParts.length);
         let chosenPart = availableParts[randomIndex];
@@ -139,82 +155,99 @@ function chooseEnemyParts(enemy) {
         availableParts.splice(randomIndex, 1);
     }
 
-    return { attackParts: attackParts, defenceParts: defenceParts };
+    return { attackParts, defenceParts };
 }
 
 
 
 function calculateDamage(attacker, targetDefenceParts) {
+    if (attacker.attackParts.length === 0) {
+        return { damage: 0, isCritical: false, isBlocked: false };
+    }
 
-    let damage = attacker.attack;
-    let isBlocked = false;
+    if (!targetDefenceParts) {
+        targetDefenceParts = [];
+    }
+
+
+
+    let totalDamage = 0;
     let isCritical = Math.random() < attacker.criticalChance;
-    if (isCritical) {
-        damage = damage * attacker.criticalMult;
+    let isBlocked = false;
 
-    }
-    if (isCritical) {
-        for (let i = 0; i < attacker.attackParts.length; i++) {
-            for (let j = 0; j < targetDefenceParts.length; j++) {
-                if (attacker.attackParts[i] === targetDefenceParts[j]) {
-                    isBlocked = false;
-                }
-            }
+    attacker.attackParts.forEach(attackPart => {
+        let partDamage = attacker.attack;
+        if (isCritical) {
+            partDamage *= attacker.criticalMult;
+        } else if (targetDefenceParts.includes(attackPart)) {
+            isBlocked = true;
+            partDamage = 0;
         }
-        if (!isCritical) {
-            isBlocked = false;
-            damage = damage = attacker.attack;
-        }
-    }
-    return { damage: damage, isCritical: isCritical, isBlocked: isBlocked };
+        totalDamage += partDamage;
+    });
+    return { damage: totalDamage, isCritical, isBlocked };
 }
 
 
 function battle() {
     if (isGameOver) {
         addLog("Game is over, please reset!");
-        gameOver();
+        return;
     }
 
     const attackPart = document.querySelector('input[name="attack"]:checked').value;
     const defenceParts = Array.from(document.querySelectorAll('input[name="defence"]:checked')).map(input => input.value);
 
-    if (!attackPart || defenceParts.length !== 2) {
-        addInfo("Please select one attack zone and two defence zones!");
-        return;
-    }
-
     player.attackParts = [attackPart];
     player.defenceParts = defenceParts;
 
     const enemyChoices = chooseEnemyParts(currentEnemy);
-    currentEnemy.attackParts = [enemyChoices.attackPart];
-    currentEnemy.defenceParts = enemyChoices.defendParts;
+    currentEnemy.attackParts = enemyChoices.attackParts;
+    currentEnemy.defenceParts = enemyChoices.defenceParts;
 
     const playerAttack = calculateDamage(player, currentEnemy.defenceParts);
     currentEnemy.health -= playerAttack.damage;
+    if (currentEnemy.health < 0) currentEnemy.health = 0;
     addLog(`${localStorage.getItem('name')} attacks ${currentEnemy.name}'s ${player.attackParts[0]} for ${playerAttack.damage} damage${playerAttack.isCritical ? ' (Critical)' : ''}${playerAttack.isBlocked ? ' (Blocked)' : ''}! Enemy HP: ${currentEnemy.health}`);
+    enemyHealthSpan.textContent = currentEnemy.health;
+    enemyHpBar.value = currentEnemy.health;
+
+
+
+
+    if (currentEnemy.health <= 0) {
+        enemyIsDead = true;
+        let wins = parseInt(localStorage.getItem('wins') || '0') + 1;
+        localStorage.setItem('wins', wins);
+        addInfo(`${enemyNameSpan.textContent} defeated!`);
+        gameOver();
+        return;
+    }
+
+
+
+
 
     const enemyAttack = calculateDamage(currentEnemy, player.defenceParts);
     player.health -= enemyAttack.damage;
     addLog(`${currentEnemy.name} attacks ${localStorage.getItem('name')} ${currentEnemy.attackParts[0]} for ${enemyAttack.damage} damage${enemyAttack.isCritical ? ' (Critical)' : ''}${enemyAttack.isBlocked ? ' (Blocked)' : ''}! Player HP: ${player.health}`);
-
+    if (player.health < 0) player.health = 0;
     playerHealthSpan.textContent = player.health;
     playerHpBar.value = player.health;
     if (player.health <= 0) {
         playerIsDead = true;
+        let loses = parseInt(localStorage.getItem('loses') || '0') + 1;
+        localStorage.setItem('loses', loses);
+        addInfo(`${playerNameSpan.textContent} defeated!`);
         gameOver();
-        addInfo(`${playerNameSpan.textContent} defeat!`)
-        localStorage.setItem('loses', loses + 1)
         return;
     }
 
-    if (currentEnemy.health <= 0) {
-        enemyIsDead = true;
-        gameOver();
-        addInfo(`${enemyNameSpan.textContent} defeat!`)
-        localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy));
-        localStorage.setItem('loses', loses + 1)
+    if (Math.random() < 0.2) {
+        const phrases = currentEnemy.fightPhrase;
+        const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+        const formattedPhrase = randomPhrase.replace('Enemy', currentEnemy.name);
+        addInfo(formattedPhrase);
     }
 
 }
